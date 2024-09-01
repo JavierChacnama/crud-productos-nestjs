@@ -6,6 +6,7 @@ import * as fs from 'fs';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const port = process.env.PORT || 3000;
 
   app.setGlobalPrefix("ansur/api");
 
@@ -29,8 +30,6 @@ async function bootstrap() {
 // configura la ruta para acceder a la documentacion
   SwaggerModule.setup("docs", app, document);
 
-  
-
-  await app.listen(3000);
+  await app.listen(port);
 }
 bootstrap();
